@@ -1,0 +1,412 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD19\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2/17/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6:39:21 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc" class="file"><acronym title="D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc">D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">24</td></tr>
+</table>
+</td>
+</table><a name="IDSF3VDKJZSTDFI2UYD120LM212OBUNUTJXXHUELIXBTFRV4RJPZ3C"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDX4AB0VWKF3EJFJNOB5NUJSY2MMDJFSITA4M14VDUWPVE4LT1WRUG">Clearance Constraint (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDY01WZ2PATE1EOS4BGCF2BAGA3BTJJFTKWJDPPAPU0QMQOVKAOLIJ">Clearance Constraint (Gap=0.127mm) (IsStitchingVia and InNet('GND')),((IsVia and (Not IsStitchingVia)) Or IsPad)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXBFMJZX2NLNT1EBS2COX3B0PG0KDQ4DFPXMNK5LZP3KUKXCNHI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHJSCT1IOD3E2ODG5LEGNWOKM3GOKX5XFRR4UGIJPN35Q3U34V01H">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLSBWFRFWZPHDH5A00TSUPTR3LDOAZEVB43UTGNP0VQ45V5SX0X3">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDARUJVFAUOQLUETQHTBBUK1GZSIHHHLTPLAU1VBGNK3RY43VIEZFM">Width Constraint (Min=0.16mm) (Max=0.5mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4U0NXY21UNJFFGZ0M2NJOW0HJCGDVS1T0RTQRZJLDA3UPPQS1X2K">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDF00GQGNGJBX4JLAUBL5U11BJGJVURIKCMG3G2DJHM1NEOS0LSOOF">Hole Size Constraint (Min=0.04mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0OBISIQDYUDGOP2MQ02CXDAFLKE3NP03ULMFWQLHW20OA2WWZPEK">Hole To Hole Clearance (Gap=0.04mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXHJAQT20KLUZECXYTLSGFEKGPGHIWOBKLNVNPOLUZLMBBHYKSJVJ">Minimum Solder Mask Sliver (Gap=0.04mm) (All),(All)</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWD1MV2HHTNSFMSAD5NGIMKEUGP4CN5KHVGNH1FFXWBN0S4KWMLJ">Silk To Solder Mask (Clearance=0.04mm) (IsPad),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAKNOUFWYV3KFLG0ZOD3ZI4UDXIMWK3D5TTOPIROFZAUXW1NXVWZE">Silk to Silk (Clearance=0.04mm) (All),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMKBZJESWDYB0BD314FAYCNRE5GPJGIJ35D45WXIVRE2LWTNDXPAP">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCX03TMZUS5DFGZ3ZY1ACUJAWLTB3Z0U0QRH44GFDKVFQGSGIRCC">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">24</td>
+</tr>
+</table><br><a name="IDXHJAQT20KLUZECXYTLSGFEKGPGHIWOBKLNVNPOLUZLMBBHYKSJVJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.04mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.588mil|Location2.X=3706.412mil|Location1.Y=2586.659mil|Location2.Y=2589.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.588mil|Location2.X=3706.412mil|Location1.Y=2586.659mil|Location2.Y=2589.483mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.034mm &lt; 0.04mm) Between Pad C3-1(94.067mm,66.294mm) on Top Layer And Via (94.107mm,65.43mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.034mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4088.242mil|Location2.X=4094.086mil|Location1.Y=2237.884mil|Location2.Y=2243.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4088.242mil|Location2.X=4094.086mil|Location1.Y=2237.884mil|Location2.Y=2243.657mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.04mm) Between Pad C5-2(103.383mm,56.738mm) on Top Layer And Via (104.09mm,57.166mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4240.221mil|Location2.X=4243.046mil|Location1.Y=2588.588mil|Location2.Y=2591.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4240.221mil|Location2.X=4243.046mil|Location1.Y=2588.588mil|Location2.Y=2591.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.019mm &lt; 0.04mm) Between Pad C6-1(107.188mm,65.699mm) on Top Layer And Via (108.037mm,65.786mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.019mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4240.221mil|Location2.X=4243.046mil|Location1.Y=2532.013mil|Location2.Y=2534.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4240.221mil|Location2.X=4243.046mil|Location1.Y=2532.013mil|Location2.Y=2534.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.019mm &lt; 0.04mm) Between Pad C6-2(107.188mm,64.349mm) on Top Layer And Via (108.037mm,64.349mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.019mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4030.054mil|Location2.X=4032.879mil|Location1.Y=2676.057mil|Location2.Y=2678.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4030.054mil|Location2.X=4032.879mil|Location1.Y=2676.057mil|Location2.Y=2678.882mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.04mm) Between Pad C7-2(103.136mm,68.041mm) on Top Layer And Via (102.108mm,68.072mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.32mil|Location2.X=4343.145mil|Location1.Y=2518.588mil|Location2.Y=2521.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.32mil|Location2.X=4343.145mil|Location1.Y=2518.588mil|Location2.Y=2521.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.016mm &lt; 0.04mm) Between Pad IC1-2(110.678mm,64.232mm) on Top Layer And Via (109.982mm,64.008mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.016mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.32mil|Location2.X=4343.145mil|Location1.Y=2543.588mil|Location2.Y=2546.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4340.32mil|Location2.X=4343.145mil|Location1.Y=2543.588mil|Location2.Y=2546.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.016mm &lt; 0.04mm) Between Pad IC1-2(110.678mm,64.232mm) on Top Layer And Via (109.982mm,64.643mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.016mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.757mil|Location2.X=4374.582mil|Location1.Y=2513.588mil|Location2.Y=2516.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.757mil|Location2.X=4374.582mil|Location1.Y=2513.588mil|Location2.Y=2516.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.04mm) Between Pad IC1-2(110.678mm,64.232mm) on Top Layer And Via (111.379mm,63.881mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.757mil|Location2.X=4374.582mil|Location1.Y=2538.588mil|Location2.Y=2541.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.757mil|Location2.X=4374.582mil|Location1.Y=2538.588mil|Location2.Y=2541.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.04mm) Between Pad IC1-2(110.678mm,64.232mm) on Top Layer And Via (111.379mm,64.516mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4150.186mil|Location2.X=4155.958mil|Location1.Y=2481.99mil|Location2.Y=2487.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4150.186mil|Location2.X=4155.958mil|Location1.Y=2481.99mil|Location2.Y=2487.833mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.024mm &lt; 0.04mm) Between Pad STM1-37(105.381mm,63.294mm) on Top Layer And Via (105.664mm,62.865mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.024mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4010.107mil|Location2.X=4015.957mil|Location1.Y=2667.021mil|Location2.Y=2672.787mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4010.107mil|Location2.X=4015.957mil|Location1.Y=2667.021mil|Location2.Y=2672.787mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.034mm &lt; 0.04mm) Between Pad STM1-48(101.492mm,67.183mm) on Top Layer And Via (102.108mm,68.072mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.034mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4402.621mil|Location2.X=4408.185mil|Location1.Y=2588.028mil|Location2.Y=2595.316mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4402.621mil|Location2.X=4408.185mil|Location1.Y=2588.028mil|Location2.Y=2595.316mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.016mm &lt; 0.04mm) Between Pad USB*-12(112.557mm,65.43mm) on Top Layer And Via (111.6mm,65.913mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.016mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWD1MV2HHTNSFMSAD5NGIMKEUGP4CN5KHVGNH1FFXWBN0S4KWMLJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.04mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4427.311mil|Location2.X=4434.532mil|Location1.Y=2265.047mil|Location2.Y=2270.62mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4427.311mil|Location2.X=4434.532mil|Location1.Y=2265.047mil|Location2.Y=2270.62mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.025mm &lt; 0.04mm) Between Pad USB*-13(113.132mm,57.91mm) on Multi-Layer And Track (112.557mm,57.76mm)(119.907mm,57.76mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.025mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4425.796mil|Location2.X=4431.542mil|Location1.Y=2628.5mil|Location2.Y=2634.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4425.796mil|Location2.X=4431.542mil|Location1.Y=2628.5mil|Location2.Y=2634.367mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.038mm &lt; 0.04mm) Between Pad USB*-13(113.132mm,66.55mm) on Multi-Layer And Track (112.557mm,66.7mm)(119.907mm,66.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.038mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4584.778mil|Location2.X=4586.827mil|Location1.Y=2272.991mil|Location2.Y=2275.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4584.778mil|Location2.X=4586.827mil|Location1.Y=2272.991mil|Location2.Y=2275.041mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.04mm) Between Pad USB*-13(117.312mm,57.91mm) on Multi-Layer And Track (112.557mm,57.76mm)(119.907mm,57.76mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4584.778mil|Location2.X=4586.827mil|Location1.Y=2624.959mil|Location2.Y=2627.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4584.778mil|Location2.X=4586.827mil|Location1.Y=2624.959mil|Location2.Y=2627.009mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.04mm) Between Pad USB*-13(117.312mm,66.55mm) on Multi-Layer And Track (112.557mm,66.7mm)(119.907mm,66.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAKNOUFWYV3KFLG0ZOD3ZI4UDXIMWK3D5TTOPIROFZAUXW1NXVWZE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.04mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4557.506mil|Location2.X=4560.33mil|Location1.Y=2356.265mil|Location2.Y=2359.089mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4557.506mil|Location2.X=4560.33mil|Location1.Y=2356.265mil|Location2.Y=2359.089mil|Absolute=True">Silk To Silk Clearance Constraint: (0.034mm &lt; 0.04mm) Between Text "------------------" (115.316mm,58.547mm) on Bottom Overlay And Text "V0.1-17.02.25" (115.824mm,59.055mm) on Bottom Overlay Silk Text to Silk Clearance [0.034mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4024.11mil|Location2.X=4026.159mil|Location1.Y=2159.591mil|Location2.Y=2161.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4024.11mil|Location2.X=4026.159mil|Location1.Y=2159.591mil|Location2.Y=2161.641mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.04mm) Between Text "3V3" (100.965mm,54.356mm) on Top Overlay And Track (102.199mm,54.988mm)(102.411mm,54.776mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4028.38mil|Location2.X=4030.43mil|Location1.Y=2155.434mil|Location2.Y=2157.484mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4028.38mil|Location2.X=4030.43mil|Location1.Y=2155.434mil|Location2.Y=2157.484mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.04mm) Between Text "3V3" (100.965mm,54.356mm) on Top Overlay And Track (102.411mm,54.776mm)(104.391mm,56.756mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.346mil|Location2.X=4376.917mil|Location1.Y=2159.505mil|Location2.Y=2166.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.346mil|Location2.X=4376.917mil|Location1.Y=2159.505mil|Location2.Y=2166.739mil|Absolute=True">Silk To Silk Clearance Constraint: (0.01mm &lt; 0.04mm) Between Text "RST" (111.125mm,54.356mm) on Top Overlay And Track (110.998mm,54.926mm)(110.998mm,55.118mm) on Top Overlay Silk Text to Silk Clearance [0.01mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4373.975mil|Location2.X=4376.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4373.975mil|Location2.X=4376.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.04mm) Between Text "RST" (111.125mm,54.356mm) on Top Overlay And Track (110.998mm,54.926mm)(113.538mm,54.926mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4418.975mil|Location2.X=4421.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4418.975mil|Location2.X=4421.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.04mm) Between Text "RST" (111.125mm,54.356mm) on Top Overlay And Track (112.268mm,54.926mm)(112.268mm,56.326mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4283.975mil|Location2.X=4286.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4283.975mil|Location2.X=4286.025mil|Location1.Y=2159.74mil|Location2.Y=2161.789mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.04mm) Between Text "RX" (108.839mm,54.356mm) on Top Overlay And Track (107.95mm,54.926mm)(110.49mm,54.926mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4301.181mil|Location2.X=4306.77mil|Location1.Y=2159.497mil|Location2.Y=2166.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\##ALTIUM DISIGNER\P1\CosmoLink_Alpha_V0.00\CosmoLink_Alpha_V0.00.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4301.181mil|Location2.X=4306.77mil|Location1.Y=2159.497mil|Location2.Y=2166.593mil|Absolute=True">Silk To Silk Clearance Constraint: (0.003mm &lt; 0.04mm) Between Text "RX" (108.839mm,54.356mm) on Top Overlay And Track (109.22mm,54.926mm)(109.22mm,56.326mm) on Top Overlay Silk Text to Silk Clearance [0.003mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

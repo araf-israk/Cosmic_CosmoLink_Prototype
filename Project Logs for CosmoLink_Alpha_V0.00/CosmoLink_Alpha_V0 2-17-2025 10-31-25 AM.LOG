@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=DP Pin=STM1-33
+Removed Pin From Net: NetName=DM Pin=USB*-5
+Removed Pin From Net: NetName=DM Pin=USB*-7
+Change Net Name : Old Net Name=DP New Net Name=DP+
+Added Pin To Net: NetName=DM- Pin=USB*-5
+Added Pin To Net: NetName=DM- Pin=USB*-7
+Added Net: Name=DM-
+Added Pin To Net: NetName=DP Pin=STM1-33
+Added Net: Name=DP
